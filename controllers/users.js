@@ -17,7 +17,7 @@ module.exports.signup = async(req,res)=>{
                 return next(err);
             }
             req.flash("success", "Welcome to VistaBNB!");
-            res.redirect("/listings");
+            res.redirect("/");
         })
     } catch(e) {
         req.flash("error", e.message);
@@ -32,7 +32,7 @@ module.exports.loginForm = (req, res) => {
 
 module.exports.login = async (req, res) => {
   req.flash("success", "Welcome back to VistaBNB! You are in!");
-  let redirectUrl = res.locals.redirectUrl || "/listings";
+  let redirectUrl = res.locals.redirectUrl || "/";
   res.redirect(redirectUrl);
 };
 
@@ -42,6 +42,6 @@ module.exports.logout = (req, res, next) => {
       return next(err);
     }
     req.flash("success", "You are logged out!");
-    res.redirect("/listings");
+    res.redirect("/");
   });
 };

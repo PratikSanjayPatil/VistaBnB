@@ -28,7 +28,7 @@ module.exports.createListing = async (req, res, next) => {
     newListing.image = {url, filename};
     await newListing.save();
     req.flash("success", "New Listing Created!");
-    res.redirect("/listings");
+    res.redirect("/");
 }
 
 module.exports.editListing = async (req,res) => {
@@ -36,7 +36,7 @@ module.exports.editListing = async (req,res) => {
     const listing = await Listing.findById(id);
     if (!listing) {
       req.flash("error", "Listing you reqested for does not exist!");
-      return res.redirect("/listings");
+      return res.redirect("/");
     }
 
     let originalImageUrl = listing.image.url;
@@ -68,5 +68,5 @@ module.exports.destroyListing = async (req, res) => {
   const { id } = req.params;
   await Listing.findByIdAndDelete(id);
   req.flash("success", "Listing Deleted!");
-  res.redirect("/listings");
+  res.redirect("/");
 };

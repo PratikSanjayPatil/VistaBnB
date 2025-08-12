@@ -112,7 +112,7 @@ app.use((req,res,next)=>{
 
 //Connect routes
 
-app.use("/listings", listingsRouter);
+app.use("/", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/", userRouter);
 
